@@ -12,7 +12,15 @@ name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your Smoothie will be:', name_on_order)
 
 # Get the current Snowflake session
-cnx=st.connection("snowflake")
+cnx=st.connection("snowflake",type="snowflake", 
+    account = "ORBRNYB-JZ55551.snowflakecomputing.com",
+   user = "ORBRNYB-JZ55551",
+    password = "Sanskari@23456",
+    warehouse = "SNOWFLAKE_LEARNING_WH",
+    database = "SMOOTHIES",
+    schema = "PUBLIC",
+    role = "SYSADMIN"  )
+
 session = cnx.session()
 
 # Get list of available fruits from the Snowflake table
