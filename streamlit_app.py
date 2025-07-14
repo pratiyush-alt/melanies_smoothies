@@ -5,9 +5,7 @@ from snowflake.snowpark.functions import col
 
 
 
-cnx=st.connection("snowflake", type="snowflake")
 
-session = cnx.session()
 # Set Streamlit app title and instructions
 st.title(":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
 st.write("Choose the fruits you want in your Smoothie!")
@@ -18,6 +16,9 @@ st.write('The name on your Smoothie will be:', name_on_order)
 
 # Get the current Snowflake session
 
+cnx=st.connection("snowflake", type="snowflake")
+
+session = cnx.session()
 
 # Get list of available fruits from the Snowflake table
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
